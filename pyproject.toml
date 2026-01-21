@@ -1,0 +1,9 @@
+[project]
+name = "haifeng-learning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jax[tpu]>=0.4.30",
+]
