@@ -3,6 +3,17 @@ from jax import numpy as jnp
 from jax.experimental import pallas as pl
 import numpy as np
 
+"""
+ConcretizationTypeError 就相当于： 
+设计师（Python）在画图纸时，突然停下笔说：“如果客厅现在的温度大于 25 度，我就把这面墙画成红色，否则画成蓝色。”
+这根本没法画！ 因为图纸上只是写着“这里有个温度计”，现在还没盖好房子，根本没有“现在的温度”这个具体的数。设计师没法做这个决定。
+
+怎么解决？（把决定权交给未来）
+既然设计师（Python）在画图时做不了决定，那就把这个决定写进图纸里，让工人（TPU）在施工时去做。
+
+这就是为什么我们要用 pl.when
+"""
+
 
 def correct_sum_kernel(x_ref, o_ref):
     # 一个带有条件的装饰器：也是根据 grid 而言的 (Block_H, Block_W, Reduction_Size)
